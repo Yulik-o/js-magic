@@ -1,0 +1,23 @@
+@import "./reset";
+
+.container {
+  max-width: 700px;
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 80px;
+  background-color: rgb(9, 139, 118);
+}
+
+main {
+  font-family: "Roboto";
+  color: #fff;
+}
+.heading {
+  font-weight: 500;
+}
+.tasks_link {
+  font-size: 26px;
+  margin-top: 25px;
+  display: inline-block;
+}

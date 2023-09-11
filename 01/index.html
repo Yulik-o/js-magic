@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/main.min.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <h1 class="js_heading_why">What is for JS?</h1>
+        <p>To make web pages interactive</p>
+        <div class="variables_wrapper">
+          <h3>Great variable names:</h3>
+          <ul class="user_name_list">
+            <li class="user_item">userName</li>
+            <li class="user_item">userSurname</li>
+            <li class="user_item">clientName</li>
+            <li class="user_item">customerName</li>
+            <li class="user_item">customerSurname</li>
+          </ul>
+          <h3>Bad variable names:</h3>
+          <ul class="user_name_list">
+            <li class="user_item">1user</li>
+            <li class="user_item">user-name</li>
+            <li class="user_item">2user</li>
+            <li class="user_item">Customer</li>
+          </ul>
+        </div>
+        <div class="button_wrapper">
+          <button onclick="askUserName()" class="user_name button">
+            Ask User Name
+          </button>
+          <button onclick="askBirthday()" class="user_name button">
+            Ask User Birthday
+          </button>
+          <button onclick="askSquareSide()" class="user_name button">
+            Ask Square Side
+          </button>
+          <button onclick="askCircleRadius()" class="user_name button">
+            Ask Circle Radius
+          </button>
+          <button onclick="askDistance()" class="user_name button">
+            Ask Distance
+          </button>
+          <button onclick="currencyСonverter()" class="user_name button">
+            Сurrency Сonverter
+          </button>
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
