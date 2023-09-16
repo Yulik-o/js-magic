@@ -62,21 +62,21 @@ function displaySpecialCharacter() {
       alert("(");
       break;
   }
-} // function getPalindrome() {
-//   const userNumber = prompt("Please enter a five-digit number");
-//   for (let i = 0; i < userNumber.length; i++) {
-//     console.log(userNumber[i]);
-//     for (let j = 5; j < userNumber.length; j--) {
-//       console.log(userNumber[j]);
-//       if (userNumber[i] === userNumber[j]) {
-//         console.log("Wow, this is a palindrome!");
-//       } else {
-//         console.log("Your number is not a palindrome!");
-//       }
-//     }
-//   }
-// }
+}
 
+function getPalindrome() {
+  var userNumber = prompt("Please enter a five-digit number");
+
+  for (var _i = 0; _i < userNumber.length; _i++) {
+    console.log(userNumber[_i]);
+
+    if (userNumber[_i] !== userNumber[userNumber.length - 1 - _i]) {
+      console.log("Your number is not a palindrome!");
+    } else {
+      console.log("Wow, this is a palindrome! ");
+    }
+  }
+}
 
 function getPurchaseSum() {
   var purchaseSum = parseInt(prompt("Enter the sum of your purchase"));
@@ -117,3 +117,58 @@ function getDayOfWeek() {
 //     if ( userNumber)
 //   }
 // }
+
+
+function getNextDate() {
+  var userDate = prompt("Please, enter any date.");
+  var dateArray = userDate.split("."); // make array from string
+
+  var day = +dateArray[0];
+  var month = +dateArray[1];
+  var year = +dateArray[2];
+  if (isNaN(day) || isNaN(month) || isNaN(year)) return false;
+  var nextDay = day + 1;
+  var nextMonth = month;
+  var nextYear = year;
+
+  switch (month) {
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      if (day === 30) {
+        nextDay = 1;
+        nextMonth++;
+      }
+
+      break;
+
+    case 2:
+      if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+        if (day === 29) {
+          nextDay = 1;
+          nextMonth++;
+        }
+      } else {
+        if (day >= 28) {
+          nextDay = 1;
+          nextMonth++;
+        }
+      }
+
+      break;
+
+      if (nextMonth > 12) {
+        nextMonth = 1;
+        nextDay = 1;
+        nextYear++;
+      }
+
+  }
+
+  var addZero = function addZero(n) {
+    return n < 10 ? "0".concat(n) : n;
+  };
+
+  console.log("Next date - ".concat(addZero(nextDay), ".").concat(addZero(nextMonth), ".").concat(nextYear));
+}

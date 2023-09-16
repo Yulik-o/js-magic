@@ -54,20 +54,19 @@ function displaySpecialCharacter() {
   }
 }
 
-// function getPalindrome() {
-//   const userNumber = prompt("Please enter a five-digit number");
-//   for (let i = 0; i < userNumber.length; i++) {
-//     console.log(userNumber[i]);
-//     for (let j = 5; j < userNumber.length; j--) {
-//       console.log(userNumber[j]);
-//       if (userNumber[i] === userNumber[j]) {
-//         console.log("Wow, this is a palindrome!");
-//       } else {
-//         console.log("Your number is not a palindrome!");
-//       }
-//     }
-//   }
-// }
+function getPalindrome() {
+  const userNumber = prompt("Please enter a five-digit number");
+  for (let i = 0; i < userNumber.length; i++) {
+    console.log(userNumber[i]);
+
+    if (userNumber[i] !== userNumber[userNumber.length - 1 - i]) {
+      console.log("Your number is not a palindrome!");
+    } else {
+      console.log("Wow, this is a palindrome! ");
+    }
+  }
+}
+
 function getPurchaseSum() {
   const purchaseSum = parseInt(prompt("Enter the sum of your purchase"));
   if (!isNaN(purchaseSum)) {
@@ -129,3 +128,49 @@ function getDayOfWeek() {
 //     if ( userNumber)
 //   }
 // }
+function getNextDate() {
+  const userDate = prompt("Please, enter any date.");
+  const dateArray = userDate.split("."); // make array from string
+  const day = +dateArray[0];
+  const month = +dateArray[1];
+  const year = +dateArray[2];
+  if (isNaN(day) || isNaN(month) || isNaN(year)) return false;
+  let nextDay = day + 1;
+  let nextMonth = month;
+  let nextYear = year;
+  switch (month) {
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      if (day === 30) {
+        nextDay = 1;
+        nextMonth++;
+      }
+
+      break;
+    case 2:
+      if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+        if (day === 29) {
+          nextDay = 1;
+          nextMonth++;
+        }
+      } else {
+        if (day >= 28) {
+          nextDay = 1;
+          nextMonth++;
+        }
+      }
+      break;
+
+      if (nextMonth > 12) {
+        nextMonth = 1;
+        nextDay = 1;
+        nextYear++;
+      }
+  }
+  const addZero = (n) => (n < 10 ? `0${n}` : n);
+  console.log(
+    `Next date - ${addZero(nextDay)}.${addZero(nextMonth)}.${nextYear}`
+  );
+}
