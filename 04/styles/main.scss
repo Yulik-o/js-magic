@@ -1,0 +1,30 @@
+@import "./reset";
+
+.container {
+  max-width: 1400px;
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 80px;
+  font-family: "Roboto";
+  font-size: 24px;
+  color: rgb(9, 139, 118);
+}
+
+.button_wrapper {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.button {
+  border: none;
+  padding: 8px 10px;
+  background-color: rgb(9, 139, 118);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 18px;
+}
