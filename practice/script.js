@@ -1,4 +1,4 @@
-Practice;
+//Practice;
 let user = {
   name: "Ivan",
   surname: "Smith",
@@ -69,3 +69,16 @@ console.log(clone);
 // };
 // Object.assign(user, permission1, permission2);
 // console.log(user.canEdit);
+function speak(f) {
+  var d = new SpeechSynthesisUtterance();
+  var e = speechSynthesis.getVoices();
+  d.voice = e[2];
+  d.voiceURI = "native";
+  d.volume = 1;
+  d.rate = 1;
+  d.pitch = 1;
+  d.text = f;
+  d.lang = "en-EN";
+  speechSynthesis.speak(d);
+}
+speak("Hello my master!");

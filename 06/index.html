@@ -17,7 +17,28 @@
     <div class="container">
       <h1>06 JS task</h1>
       <div class="button_wrapper">
-        <button onclick="" class="button" type="button"></button>
+        <button onclick="sortIsBoughtArray()" class="button" type="button">
+          sort what is bought
+        </button>
+        <button
+          onclick="toggleGoodsBuying('potato')"
+          class="button"
+          type="button"
+        >
+          toggle isBought
+        </button>
+        <button onclick="deleteProduct(3498)" class="button" type="button">
+          delete product from list
+        </button>
+        <button onclick="addToCart(3498, 2)" class="button" type="button">
+          add to cart
+        </button>
+        <button onclick="showCartProducts()" class="button" type="button">
+          show cart products
+        </button>
+        <button onclick="getAmountOfProduct()" class="button" type="button">
+          get amount in cart
+        </button>
       </div>
     </div>
     <script src="./script.js"></script>

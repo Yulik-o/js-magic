@@ -5,6 +5,7 @@ const allProducts = [
     price: 8,
     quantity: 200,
     discount: 0.03,
+    isBought: false,
     isDiscount: true,
   },
   {
@@ -13,6 +14,7 @@ const allProducts = [
     price: 4,
     quantity: 100,
     discount: 0,
+    isBought: false,
     isDiscount: false,
   },
   {
@@ -21,6 +23,7 @@ const allProducts = [
     price: 18,
     quantity: 8,
     discount: 0.5,
+    isBought: true,
     isDiscount: true,
   },
   {
@@ -29,6 +32,7 @@ const allProducts = [
     price: 18,
     quantity: 2,
     discount: 0.1,
+    isBought: false,
     isDiscount: true,
   },
   {
@@ -37,6 +41,7 @@ const allProducts = [
     price: 2,
     quantity: 2000,
     discount: 0,
+    isBought: false,
     isDiscount: false,
   },
   {
@@ -45,9 +50,38 @@ const allProducts = [
     price: 80,
     quantity: 10,
     discount: 0.1,
+    isBought: false,
     isDiscount: true,
   },
 ];
+function sortIsBoughtArray() {
+  const sortedByBoughtArray = allProducts.sort((a, b) => {
+    if (a.isBought && !b.isBought) {
+      return 1;
+    } else if (!a.isBought && b.isBought) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  console.log(sortedByBoughtArray);
+}
+function toggleGoodsBuying(name) {
+  allProducts.forEach((el) => {
+    if (el.name === name) {
+      el.isBought = true;
+    }
+  });
+  console.log(allProducts);
+}
+function deleteProduct(uniqId) {
+  let arrayWithoutDeletedProduct = allProducts.filter(
+    (el) => el.uniqId !== uniqId
+  );
+
+  console.log(arrayWithoutDeletedProduct);
+}
+
 const userCart = [];
 function addToCart(id, quantity) {
   //push in cart product object
@@ -62,21 +96,23 @@ function addToCart(id, quantity) {
     return false;
   }
   userCart.push(newProduct);
+
   setQuantity(newProduct.quantity - quantity, id);
+  console.log(userCart);
 }
 function setQuantity(quantity, id) {
   const newProduct = allProducts.findIndex((el) => el.uniqId === id);
   allProducts[newProduct].quantity = quantity;
 }
 
-addToCart(3498, 2);
-addToCart(234, 3);
+// addToCart(3498, 2);
+// addToCart(234, 3);
 
-function deleteProduct(id) {
-  const deletedProduct = userCart.findIndex((el) => el.id === id);
+// function deleteProduct(id) {
+//   const deletedProduct = userCart.findIndex((el) => el.id === id);
 
-  userCart.splice(deletedProduct, 1);
-}
+//   userCart.splice(deletedProduct, 1);
+// }
 
 function showCartProducts() {
   const result = userCart.map((el) => {
@@ -85,4 +121,22 @@ function showCartProducts() {
   });
   console.log(result);
 }
-showCartProducts();
+// showCartProducts();
+
+function getAmountOfProduct() {
+  const amount = userCart.reduce((acc, el) => {
+    acc = el.quantity * el.price + acc;
+    return acc;
+  }, 0);
+  console.log(amount);
+  return amount;
+}
+// getAmountOfProduct();
+
+function sortByPrice() {
+  const sorted = allProducts.slice();
+  sorted.sort((a, b) => {
+    return b.quantity - a.quantity;
+  });
+  console.log(sorted);
+}
