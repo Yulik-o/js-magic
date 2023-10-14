@@ -16,12 +16,30 @@
   <body>
     <div class="container">
       <h1>Practice</h1>
-      <div class="button_wrapper">
+      <!-- <div class="button_wrapper">
         <button onclick="speak('You are great!')" class="button" type="button">
           Speak
         </button>
       </div>
-    </div>
+    </div> -->
+    <div class="container">
+      <form id="loginForm">
+          <div class="mb-3">
+              <label for="exampleInputEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="inputEmail">
+              <p id="emailHelp" class="form-text error d-none">Add valid email</p>
+              <p id="emailLenghtHelp" class="form-text d-none">You need to add at least <span id="emailDiffCount">0</span> symbols</p>
+          </div>
+          <div class="mb-3">
+              <label for="inputPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="inputPassword">
+              <p id="passwordHelp" class="form-text error d-none">Add valid password</p>
+              <p id="passwordHelpDescription" class="form-text error d-none">Password should containe: at least 1 lowercase, 1 uppercase, 1 numeric and 1 special characters. The string must be eight characters or longer</p>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <!-- <div id="my-map" style="aspect-ratio: 16/9;"></div> -->
+  </div>
     <script src="./script.js"></script>
   </body>
 </html>

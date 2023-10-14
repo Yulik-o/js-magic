@@ -1,84 +1,73 @@
-//Practice;
-let user = {
-  name: "Ivan",
-  surname: "Smith",
-};
-user.name = "Petro";
-console.log(user.name);
-delete user.name;
-console.log(user.name);
-function isEmpty(obj) {
-  for (let key in obj) {
+// const EMAIL_MIN_LENGHT = 5;
+const mediumRegex = new RegExp(
+  "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})"
+);
+
+function testPasswordRegex(value) {
+  return mediumRegex.test(value);
+}
+
+function checkEmailLenght() {
+  const valueLenght = window.inputEmail.value.length;
+  const diff =
+    valueLenght < EMAIL_MIN_LENGHT ? EMAIL_MIN_LENGHT - valueLenght : 0;
+
+  if (diff) {
+    window.emailDiffCount.textContent = diff;
+    window.emailLenghtHelp.classList.remove("d-none");
+  } else {
+    window.emailLenghtHelp.classList.add("d-none");
+  }
+}
+
+function resetValidation() {
+  window.emailHelp.classList.add("d-none");
+  window.passwordHelp.classList.add("d-none");
+  window.passwordHelpDescription.classList.add("d-none");
+}
+
+function validateForm(event) {
+  event.preventDefault();
+  resetValidation();
+
+  const email = window.inputEmail.value;
+  const password = window.inputPassword.value;
+
+  if (!email) {
+    window.emailHelp.classList.remove("d-none");
     return false;
   }
-  return true;
-}
-
-let schedule = {};
-alert(isEmpty(schedule));
-let salaries = {
-  John: 100,
-  Ann: 50,
-  Pete: 70,
-};
-
-let sum = 0;
-for (let key in salaries) {
-  sum += salaries[key];
-  console.log(sum);
-}
-
-alert(sum);
-let menu = {
-  width: 200,
-  height: 300,
-  title: "My menu",
-};
-function multiplyNumeric(obj) {
-  for (let key in obj) {
-    if (typeof obj[key] == "number") {
-      obj[key] *= 2;
-    }
+  if (!password) {
+    window.passwordHelp.classList.remove("d-none");
+    return false;
   }
-}
-multiplyNumeric(menu);
-console.log(menu);
 
-// copy of the object:
-let userObject = {
-  name: "Ivan",
-  age: 32,
-};
-let clone = {};
-for (let key in userObject) {
-  clone[key] = userObject[key];
-}
-console.log(clone);
-clone.name = "Stas";
-console.log(clone);
+  if (!testPasswordRegex(password)) {
+    window.passwordHelp.classList.remove("d-none");
+    window.passwordHelpDescription.classList.remove("d-none");
+  }
 
-//Object.assign()
-// let user = {
-//   name: "Mykola",
-// };
-// let permission1 = {
-//   canView: true,
-// };
-// let permission2 = {
-//   canEdit: true,
-// };
-// Object.assign(user, permission1, permission2);
-// console.log(user.canEdit);
-function speak(f) {
-  var d = new SpeechSynthesisUtterance();
-  var e = speechSynthesis.getVoices();
-  d.voice = e[2];
-  d.voiceURI = "native";
-  d.volume = 1;
-  d.rate = 1;
-  d.pitch = 1;
-  d.text = f;
-  d.lang = "en-EN";
-  speechSynthesis.speak(d);
+  // console.log(email, password);
 }
-speak("Hello my master!");
+
+function formSubmit(event) {
+  event.preventDefault();
+
+  let apiToken = "6349577279:AAHjS79gNUqk3QS5-ipyiMGhXxtOkqTyRL0";
+  let chatId = "-1001961252000";
+  let text = "Hello world!";
+
+  let urlString = `https://api.telegram.org/bot${apiToken}/sendMessage?chat_id=${chatId}&text=${text}`;
+
+  let request = new XMLHttpRequest();
+  request.open("GET", urlString);
+  request.send();
+
+  let response = request.response;
+
+  // Do what you want with response
+}
+
+// window.inputEmail.addEventListener('input', checkEmailLenght);
+window.loginForm.addEventListener("submit", formSubmit);
+// document.addEventListener('DOMContentLoaded', checkEmailLenght);
